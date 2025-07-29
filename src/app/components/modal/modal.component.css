@@ -1,0 +1,389 @@
+/* MODAL: Tamaño optimizado y mejor alineación */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%; 
+  max-width: 500px;
+  background: #FB9CD6;
+  padding: 25px;
+  border-radius: 25px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+  max-height: 90vh; /* Evita que sea demasiado alto en pantallas pequeñas */
+  overflow-y: auto; /* Permite scroll si el contenido es muy largo */
+}
+
+/* Fondo difuminado más pronunciado */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  z-index: 999;
+}
+
+/* TÍTULO MEJOR CENTRADO Y CONTROLADO */
+.modal h2 {
+  font-weight: 50;
+  font-size: 32px;
+  color: white;
+  text-align: center;
+  -webkit-text-stroke: 1.5px black;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-family: "superReduce", sans-serif;
+  margin-bottom: 15px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  max-width: 100%;
+}
+
+/* IMAGEN MÁS GRANDE Y CENTRADA */
+.modal img {
+  width: 100%;
+  max-height: 250px;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+  transition: transform 0.3s ease; /* Añade una transición suave */
+}
+
+.modal img:hover {
+  transform: scale(1.02); /* Efecto sutil al pasar el ratón */
+}
+
+/* TEXTOS CENTRADOS Y MÁS ESPACIADOS */
+.modal p {
+  font-weight: 50;
+  font-family: "brownBeige", sans-serif;
+  font-size: 16px;
+  color: white;
+  margin: 12px 0;
+  text-align: center;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  max-width: 100%;
+  line-height: 1.4; /* Mejora legibilidad */
+}
+
+/* SECCIÓN DEL PIE DEL MODAL */
+.modal-footer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  margin-top: 15px;
+  flex-wrap: wrap; /* Permite que los elementos se apilen en móvil */
+  gap: 15px; /* Espacio entre elementos cuando se apilan */
+}
+
+/* BOTÓN DE AÑADIR AL CARRITO MEJORADO */
+.add-to-cart {
+  font-family: "superReduce", sans-serif;
+  font-weight: 50;
+  -webkit-text-stroke: .3px black;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  background-color: #73C2FB;
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 12px 18px;
+  font-size: 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  max-width: 90%;
+  flex-grow: 1; /* Ocupa el espacio disponible */
+}
+
+.add-to-cart:hover {
+  background-color: #5aa0d9;
+  transform: translateY(-2px); /* Ligero efecto de elevación */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Sombra al hacer hover */
+}
+
+/* CONTROL DE CANTIDAD MÁS VISIBLE */
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.quantity-selector button {
+  background-color: white;
+  color: black;
+  font-size: 22px;
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  transition: 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Centra los iconos */
+}
+
+.quantity-selector button:hover {
+  background-color: #e0e0e0;
+  transform: scale(1.1); /* Pequeño zoom al pasar el ratón */
+}
+
+.quantity-selector span {
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  min-width: 20px; /* Evita saltos en la interfaz cuando cambia el número */
+}
+
+/* BOTÓN DE CIERRE MÁS ELEGANTE */
+.close-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 26px;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.close-button:hover {
+  transform: scale(1.2);
+  color: #ccc;
+}
+
+/* CONTROL DE TEXTOS QUE SE DESBORDAN */
+span {
+  font-family: "superReduce", sans-serif;
+  color: black;
+  font-weight: 100;
+  font-size: 18px;
+  -webkit-text-stroke: 0.5px black;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  max-width: 100%;
+} 
+
+/* Estilos para los menús desplegables */
+.options-container {
+  width: 100%;
+  margin: 15px 0; /* Más margen */
+  text-align: left;
+}
+
+.options-container label {
+  display: block;
+  font-family: "brownBeige", sans-serif;
+  color: white;
+  margin-bottom: 8px; /* Mayor espacio */
+  font-size: 16px;
+  font-weight: bold; /* Mayor prominencia */
+}
+
+.dropdown-select {
+  width: 100%;
+  padding: 12px; /* Más padding para mejor toque */
+  border-radius: 10px;
+  border: 2px solid white;
+  background-color: white;
+  font-family: "brownBeige", sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra sutil */
+}
+
+.dropdown-select:hover, .dropdown-select:focus {
+  border-color: #73C2FB;
+  outline: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15); /* Sombra más notable al interactuar */
+}
+
+/* Estilos para indicador de carga */
+.loading-indicator {
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 10px;
+  border-radius: 10px;
+  margin: 10px 0;
+  text-align: center;
+  width: 100%;
+}
+
+.loading-indicator p {
+  color: #333;
+  font-weight: bold;
+}
+
+/* Estilos para mensajes de error */
+.error-message {
+  background-color: rgba(255, 99, 71, 0.7);
+  padding: 10px;
+  border-radius: 10px;
+  margin: 10px 0;
+  text-align: center;
+  width: 100%;
+  animation: pulse 1.5s infinite; /* Animación sutil de pulso */
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.error-message p {
+  color: white;
+  font-weight: bold;
+}
+
+/* Estilo para botón deshabilitado */
+.add-to-cart:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* MEDIA QUERIES PARA RESPONSIVIDAD */
+@media (max-width: 768px) {
+  .modal {
+    width: 95%;
+    padding: 20px;
+    max-height: 85vh;
+  }
+  
+  .modal h2 {
+    font-size: 28px;
+  }
+  
+  .modal img {
+    max-height: 200px;
+  }
+  
+  .modal-footer {
+    flex-direction: column; /* Apila los elementos en vertical */
+    gap: 15px;
+  }
+  
+  .add-to-cart {
+    width: 100%;
+    max-width: 100%;
+    order: 2; /* El botón va después del selector de cantidad */
+  }
+  
+  .quantity-selector {
+    width: 100%;
+    justify-content: center;
+    order: 1; /* El selector va primero */
+    margin-bottom: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal {
+    padding: 15px;
+    border-radius: 20px;
+  }
+  
+  .modal h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .modal p {
+    font-size: 14px;
+    margin: 8px 0;
+  }
+  
+  .close-button {
+    top: 10px;
+    right: 10px;
+    font-size: 22px;
+  }
+  
+  .options-container label {
+    font-size: 14px;
+  }
+  
+  .dropdown-select {
+    padding: 10px;
+    font-size: 13px;
+  }
+  
+  .add-to-cart {
+    font-size: 16px;
+    padding: 10px 15px;
+  }
+  
+  .quantity-selector button {
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+  }
+  
+  .quantity-selector span {
+    font-size: 16px;
+  }
+}
+
+/* Mejora de scroll para dentro del modal */
+.modal::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+.modal::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+}
+
+.modal::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.7);
+}
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.no-image-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  opacity: 0.7;
+}
+
+.no-image-placeholder i {
+  font-size: 48px;
+  margin-bottom: 10px;
+} 

@@ -1,0 +1,20 @@
+<div class ='container'>
+    <h1>bebidas</h1>
+  
+   <div>
+    @for (product of getProductsByCategory('68531871da08e9f58f477758'); track product._id) {
+        <card-product 
+          [_id]="product._id"
+          [name]="product.name"
+          [photo]="product.photo"
+          [description]="product.description"
+          [recommendation]="product.recommendation"
+          [price]="product.price"
+          [toppings]="product.toppings"     
+          [iceCream]="product.iceCream">
+        </card-product> 
+    }
+    </div>
+
+    
+</div>

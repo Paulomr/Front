@@ -1,0 +1,29 @@
+<div class="cart-container" *ngIf="cartService.cartVisibility()">
+    <div class="cart-header">
+        <h2>Tu Carrito</h2>
+        <button (click)="toggleCartVisibility()" class="close-btn">X</button>
+    </div>
+    
+    <div class="cart-items">
+        <div *ngIf="cartItems.length === 0" class="empty-cart">
+            Tu carrito está vacío
+        </div>
+        
+        <div *ngFor="let item of cartItems" class="cart-item">
+            <!-- Añadimos logging y manejo de errores -->
+            <img [src]="getImageUrl(item.product)"
+                 alt="{{ item.product.name }}"
+                 (error)="handleImageError($event)">
+            <p>{{ item.product.name }}</p>
+            <p>Cantidad: {{ item.quantity }}</p>
+            <p>Precio: {{ item.product.price * item.quantity | currency }}</p>
+        </div>
+    </div>
+    
+    <div class="cart-footer">
+        <div class="total">
+            <p>Total: {{ calculateTotal() | currency }}</p>
+        </div>
+       <button (click)="checkoutProcess()" class="checkout-btn">Finalizar Compra</button>
+    </div>
+</div>

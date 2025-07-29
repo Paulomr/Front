@@ -1,0 +1,19 @@
+<article (click)="openModal()" class="card">
+  <img [src]="photoUrl" alt="Imagen del producto" />
+  <p>{{ name }}</p> 
+  <svg
+    width="150"
+    height="150"
+    viewBox="0 0 100 100"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M50 0 Q55 0 55 5 V30 H80 Q85 30 85 35 T80 40 H55 V65 Q55 70 50 70 T45 65 V40 H20 Q15 40 15 35 T20 30 H45 V5 Q45 0 50 0 Z"
+      fill="white"
+/>
+
+  </svg>
+</article>
+
+<!-- El modal ahora solo aparece si isModalOpen es true -->
+<app-modal *ngIf="isModalOpen" [product]="selectedProduct" (close)="closeModal()"></app-modal>

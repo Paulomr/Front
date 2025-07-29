@@ -1,0 +1,30 @@
+<section class="container">
+  <h1>PQRS</h1>
+  <form [formGroup]="pqrsForm" (ngSubmit)="enviarFormulario()">
+    <article>
+      <div>
+        <p>Nombre completo:</p>
+        <input type="text" class="name" formControlName="name" />
+      </div>
+      <div>
+        <p>Fecha:</p>
+        <input type="date" class="date" formControlName="date" />
+      </div>
+
+      <div>
+        <p>Correo:</p>
+        <input type="email" class="mail" formControlName="email" />
+      </div>
+      <div>
+        <p>Teléfono:</p>
+        <input type="text" class="phone" formControlName="phone" />
+      </div>
+    </article>
+
+    <p>¿Qué nos quieres hacer saber?</p>
+    <textarea class="message" formControlName="message"></textarea>
+
+    <button type="submit" [disabled]="pqrsForm.invalid" >Enviar</button>
+  </form>
+</section>
+ 

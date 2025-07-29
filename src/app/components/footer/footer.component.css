@@ -1,0 +1,231 @@
+
+
+
+
+
+/* Estilos del footer */
+.footer {
+  background-color: #fb9cd6;
+  padding: 20px 0; /* Añado padding vertical para mejor aspecto */
+  margin-top: 5px;
+  width: 100%;
+}
+
+h4 {
+  font-weight: 120;
+}
+
+.footer-content {
+  margin-top: auto;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8rem;
+  padding: 0 20px; /* Añadido padding horizontal */
+}
+
+/* Sección del logo */
+.footer-logo {
+  width: 100px; /* Tamaño base */
+  margin-left: 20px; /* Espacio para el escalado */
+}
+
+.footer-logo img {
+  width: auto;
+  height: 97px;
+}
+
+/* Sección de pedidos */
+.footer-pedidos {
+  flex: 1 1 auto;
+}
+
+.footer-pedidos h4 {
+  font-family: "brownBeige", sans-serif;
+  font-size: 1.2em;
+  margin-bottom: 15px;
+  color: #000;
+  text-transform: uppercase;
+  transition: color 0.3s; /* Animación añadida */
+}
+
+.footer-pedidos h4:hover {
+  color: #ffffff; /* Efecto hover */
+}
+
+.footer-quienSomos {
+  flex: 1 1 auto;
+}
+
+.footer-quienSomos h4 {
+  font-family: "brownBeige", sans-serif;
+  font-size: 1.2em;
+  margin-bottom: 15px;
+  color: #000;
+  text-transform: uppercase;
+  transition: color 0.3s; /* Animación añadida */
+}
+
+.footer-quienSomos h4:hover {
+  color: #ffffff; /* Efecto hover */
+}
+
+/* Sección legal */
+.footer-legales {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: 'brownBeige', sans-serif;
+}
+
+.footer-legales a {
+  color: #000;
+  text-decoration: none;
+  transition: color 0.3s;
+  cursor: pointer;
+}
+
+.footer-legales a:hover {
+  color: #ffffff;
+}
+
+/* Sección redes sociales */
+.footer-redes {
+  flex: 1 1 auto;
+  text-align: center;
+}
+
+.footer-redes h4 {
+  font-family: "brownBeige", sans-serif;
+  font-size: 1.2em;
+  margin-bottom: 15px;
+  color: #000;
+  text-transform: uppercase;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.social-icon {
+  font-size: 24px;
+  color: #000;
+  transition: color 0.3s;
+}
+
+.social-icon:hover {
+  color: #ffffff;
+}
+
+/* RESPONSIVE MEJORADO */
+/* Tablets y móviles grandes */
+@media (max-width: 992px) {
+  .footer-content {
+    gap: 4rem; /* Reducir el espacio entre elementos */
+    padding: 0 15px;
+  }
+  
+  .footer-logo img {
+    height: 80px; /* Reducir un poco el logo */
+  }
+}
+
+/* Tablets pequeñas */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+    padding: 20px;
+  }
+  
+  .footer-logo {
+    margin: 0 auto 20px;
+    order: 1;
+  }
+  
+  .footer-pedidos {
+    order: 2;
+    margin: 0 auto 10px;
+    text-align: center;
+  }
+  
+  .footer-quienSomos {
+    order: 3;
+    margin: 0 auto 10px;
+    text-align: center;
+  }
+  
+  .footer-legales {
+    order: 4;
+    margin: 0 auto 20px;
+    align-items: center; /* Centrar los enlaces */
+  }
+  
+  .footer-redes {
+    order: 5;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .social-icons {
+    justify-content: center;
+  }
+}
+
+/* Móviles */
+@media (max-width: 576px) {
+  .footer {
+    padding: 15px 0;
+  }
+  
+  .footer-content {
+    gap: 20px;
+  }
+  
+  .footer-logo img {
+    height: 70px; /* Reducir más el logo */
+  }
+  
+  h4 {
+    font-size: 1.1em; /* Reducir tamaño de texto */
+    margin-bottom: 10px;
+  }
+  
+  .footer-legales {
+    gap: 10px;
+  }
+  
+  .social-icons {
+    gap: 12px;
+  }
+  
+  .social-icon {
+    font-size: 22px;
+  }
+}
+
+/* Móviles pequeños */
+@media (max-width: 375px) {
+  .footer-logo img {
+    height: 60px;
+  }
+  
+  .footer-content {
+    gap: 15px;
+  }
+  
+  h4 {
+    font-size: 1em;
+  }
+  
+  .social-icon {
+    font-size: 20px;
+  }
+}
