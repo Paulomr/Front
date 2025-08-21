@@ -21,6 +21,8 @@ import { CrearProductosComponent } from './pages/crear-productos/crear-productos
 import { MilshakesProductoComponent } from './pages/milshakes-producto/milshakes-producto.component';
 import { ResumenCompraComponent } from './pages/resumen-compra/resumen-compra.component';
 import { PedidosActivosComponent } from './pages/pedidos-activos/pedidos-activos.component';
+import { VotacionComponent } from './pages/votacion/votacion.component';
+import { ConfirmacionVotoComponent } from './pages/confirmacion-voto/confirmacion-voto.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -38,7 +40,10 @@ export const routes: Routes = [
   { path: 'dadada', component: AdminComponent },
   { path: 'Admin Login', component: AdminLoginComponent },
   { path: 'Resumen de compra', component: ResumenCompraComponent },
-
+  { path: 'Votacion', component: VotacionComponent},
+  { path: 'Confirmacion Voto', component: ConfirmacionVotoComponent },
+  
+  // Rutas protegidas por el guard de autenticación
   {
     path: 'admin/dashboard',
     component: AdminComponent,

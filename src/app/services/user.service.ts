@@ -6,11 +6,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = 'https://api.crunchy-munch.com/api'; // Cambia esto a la URL de tu backend
+  private apiUrl = 'https://api.crunchy-munch.com/api/user'; // Cambia esto a la URL de tu backend
 
   constructor(private http: HttpClient) { }
 
   createUsers(userData: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/user/create`, userData);
+    return this.http.post(`${this.apiUrl}/create`, userData);
   }
 }

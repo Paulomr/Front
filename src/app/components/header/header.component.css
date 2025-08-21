@@ -100,46 +100,131 @@ body {
   
   /* Navigation */
   .nav {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    z-index: 999;
-    background-color: rgba(251, 156, 214, 0.8); /* Aumentado la opacidad */
-    padding: 15px 10px;
-    gap: 30%;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  }
+  position: relative;
+  display: flex;
+  justify-content: center; /* Centrar todo */
+  align-items: center;
+  z-index: 999;
+  background-color: rgba(251, 156, 214, 0.8);
+  padding: 8px 15px; /* Reducido significativamente el padding */
+  gap: 130px; /* Gap fijo y pequeño entre elementos */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  height: 60px; /* Altura fija más pequeña */
+}
   
-  .nav-item {
-    margin: 0 20px;
-    text-decoration: none;
-    color: black;
-    font-family: 'brownBeige', sans-serif;
-    font-size: 18px;
-    font-weight: 500; /* Peso más apropiado */
-    cursor: pointer;
-    position: relative;
-    transition: transform 0.3s ease;
-  }
+ .nav-item {
+  margin: 0;
+  text-decoration: none;
+  color: black;
+  font-family: 'brownBeige', sans-serif;
+  font-size: 18px; /* Reducido el tamaño de fuente */
+  font-weight: 600; /* Más bold para mejor visibilidad */
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.3s ease;
+  flex: none; /* No permitir que crezcan o se encojan */
+  white-space: nowrap; /* Evitar salto de línea */
+}
   
   /* Eliminar subrayado */
-  .nav-item p {
-    margin: 0;
-    padding: 5px 0;
-    position: relative;
+/* Logo interactivo en el navbar */
+ .nav-item img {
+  height: 35px;
+  display: block;
+  margin: 0;
+ 
+  cursor: pointer;
+  transition: transform 0.3s ease, filter 0.2s ease; /* Solo transform y filter */
+  /* ELIMINADOS: border-radius y box-shadow */
+}
+
+
+/* Efectos hover para el logo del navbar */
+.nav-item img:hover {
+   transform: scale(1.1); /* Agrandar ligeramente */
+  filter: brightness(1.05);
+}
+
+/* Efecto de click/active */
+.nav-item img:active {
+  transform: scale(1.05); /* Ligeramente menor que el hover */
+  transition: transform 0.1s ease; /* Transición más rápida para el click */
+}
+
+/* Opcional: Efecto de resplandor al hacer hover */
+.nav-item:has(img):hover {
+  position: relative;
+}
+
+
+
+/* Animación de pulso */
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 1;
   }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 1;
+  }
+}
+
+/* Ajustes responsive para mantener la interactividad */
+@media (max-width: 992px) {
+  .nav-item img {
+    height: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-item img {
+    height: 35px;
+  }
+  
+  .nav-item img:hover {
+    transform: scale(1.08);
+  }
+}
+
+@media (max-width: 576px) {
+  .nav-item img {
+    height: 30px;
+  }
+}
+
+@media (max-width: 375px) {
+  .nav-item img {
+    height: 25px;
+  }
+}
+
+@media (max-width: 375px) {
+  .nav-item img {
+    height: 25px;
+  }
+  
+  .nav-item:has(img):hover::before {
+    width: 35px;
+    height: 35px;
+  }
+}
   
   /* Efecto de subrayado animado */
   .nav-item p:after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: #000;
-    transition: width 0.3s ease;
-  }
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #000;
+  transition: width 0.3s ease;
+}
   
   .nav-item p:hover:after {
     width: 100%;
@@ -151,166 +236,197 @@ body {
   }
   
   /* Media Queries para Responsividad */
-  @media (max-width: 1200px) {
-    .nav {
-      gap: 20%;
-    }
-    
-    .welcome {
-      font-size: 22px;
-    }
+  /* Media Queries para Responsividad - ACTUALIZADAS */
+@media (max-width: 1200px) {
+  .nav {
+    gap: 60px; /* Cambiado de 20% a valor fijo */
+    padding: 8px 10px;
   }
   
-  @media (max-width: 992px) {
-    .logo img {
-      height: 250px;
-      margin-top: -100px;
-      margin-left: -80px;
-    }
-    
-    .user-info {
-      gap: 25px;
-    }
-    
-    .welcome {
-      font-size: 20px;
-      -webkit-text-stroke: 0.5px black;
-    }
-    
-    .nav {
-      gap: 15%;
-    }
+  .nav-item {
+    font-size: 15px;
   }
   
-  @media (max-width: 768px) {
-    .header {
-      padding: 10px 20px;
-      height: 70px;
-    }
-    
-    .logo img {
-      height: 200px;
-      margin-top: -80px;
-      margin-left: -60px;
-    }
-    
-    .user-info {
-      gap: 15px;
-    }
-    
-    .welcome {
-      font-size: 16px;
-      max-width: 120px;
-      text-align: center;
-    }
-    
-    .icon {
-      height: 40px;
-    }
-    
-    .cart {
-      height: 45px;
-    }
-    
-    .cart-badge {
-      font-size: 16px;
-      padding: 4px 8px;
-    }
-    
-    .nav {
-      padding: 10px;
-      gap: 10%;
-    }
-    
-    .nav-item {
-      font-size: 16px;
-      margin: 0 10px;
-    }
+  .welcome {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 992px) {
+  .logo img {
+    height: 250px;
+    margin-top: -100px;
+    margin-left: -80px;
   }
   
-  @media (max-width: 576px) {
-    .header {
-      padding: 10px 15px;
-      height: 60px;
-    }
-    
-    .logo img {
-      height: 160px;
-      margin-top: -65px;
-      margin-left: -45px;
-    }
-    
-    .user-info {
-      gap: 8px;
-    }
-    
-    .welcome {
-      font-size: 14px;
-      max-width: 100px;
-      -webkit-text-stroke: 0.5px black;
-    }
-    
-    .icon {
-      height: 35px;
-    }
-    
-    .cart {
-      height: 40px;
-    }
-    
-    .cart-badge {
-      font-size: 14px;
-      padding: 3px 6px;
-      min-width: 14px;
-    }
-    
-    .nav {
-      flex-direction: column; /* Cambia a columna en móviles */
-      align-items: center;
-      gap: 10px;
-      padding: 15px 0;
-    }
-    
-    .nav-item {
-      font-size: 15px;
-      margin: 5px 0;
-    }
+  .user-info {
+    gap: 25px;
   }
   
-  @media (max-width: 375px) {
-    .logo img {
-      height: 140px;
-      margin-top: -55px;
-      margin-left: -40px;
-    }
-    
-    .welcome {
-      display: none; /* Ocultar en pantallas muy pequeñas */
-    }
-    
-    .user-info {
-      gap: 10px;
-    }
-    
-    .icon, .cart {
-      height: 32px;
-    }
+  .welcome {
+    font-size: 20px;
+    -webkit-text-stroke: 0.5px black;
   }
   
-  /* Menu hamburguesa para móviles (necesitará JavaScript para funcionar) */
-  .menu-toggle {
+  .nav {
+    gap: 40px; /* Cambiado de 15% a valor fijo */
+    padding: 6px 8px;
+  }
+  
+  .nav-item {
+    font-size: 14px;
+  }
+  
+  .nav-item img {
+    height: 30px;
+  }
+}
+
+/* Media Queries para Navbar Responsive - FORMATO VERTICAL */
+
+@media (max-width: 768px) {
+  .header {
+    padding: 10px 20px;
+    height: 70px;
+  }
+  
+  .logo img {
+    height: 200px;
+    margin-top: -80px;
+    margin-left: -60px;
+  }
+  
+  .user-info {
+    gap: 15px;
+  }
+  
+  .welcome {
+    font-size: 16px;
+    max-width: 120px;
+    text-align: center;
+  }
+  
+  .icon {
+    height: 40px;
+  }
+  
+  .cart {
+    height: 45px;
+  }
+  
+  .cart-badge {
+    font-size: 16px;
+    padding: 4px 8px;
+  }
+  
+  /* NAVBAR VERTICAL PARA MÓVILES */
+  .nav {
+    flex-direction: column; /* Cambiar a columna */
+    align-items: center;
+    gap: 12px; /* Gap vertical entre elementos */
+    padding: 15px 0;
+    height: auto; /* Altura automática */
+  }
+  
+  .nav-item {
+    font-size: 16px;
+    margin: 0;
+  }
+  
+  .nav-item img {
+    height: 35px;
+  }
+}
+
+@media (max-width: 576px) {
+  .header {
+    padding: 10px 15px;
+    height: 60px;
+  }
+  
+  .logo img {
+    height: 160px;
+    margin-top: -65px;
+    margin-left: -45px;
+  }
+  
+  .user-info {
+    gap: 8px;
+  }
+  
+  .welcome {
+    font-size: 14px;
+    max-width: 100px;
+    -webkit-text-stroke: 0.5px black;
+  }
+  
+  .icon {
+    height: 35px;
+  }
+  
+  .cart {
+    height: 40px;
+  }
+  
+  .cart-badge {
+    font-size: 14px;
+    padding: 3px 6px;
+    min-width: 14px;
+  }
+  
+  /* NAVBAR VERTICAL COMPACTO */
+  .nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 0;
+    height: auto;
+  }
+  
+  .nav-item {
+    font-size: 15px;
+    margin: 0;
+  }
+  
+  .nav-item img {
+    height: 30px;
+  }
+}
+
+@media (max-width: 375px) {
+  .logo img {
+    height: 140px;
+    margin-top: -55px;
+    margin-left: -40px;
+  }
+  
+  .welcome {
     display: none;
   }
   
-  @media (max-width: 576px) {
-    .menu-toggle {
-      display: block;
-      cursor: pointer;
-      position: absolute;
-      right: 15px;
-      top: 70px;
-      z-index: 1001;
-      font-size: 24px;
-      color: #000;
-    }
+  .user-info {
+    gap: 10px;
   }
+  
+  .icon, .cart {
+    height: 32px;
+  }
+  
+  /* NAVBAR MUY COMPACTO */
+  .nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 0;
+    height: auto;
+  }
+  
+  .nav-item {
+    font-size: 14px;
+    margin: 0;
+  }
+  
+  .nav-item img {
+    height: 25px;
+  }
+}

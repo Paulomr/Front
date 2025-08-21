@@ -1,4 +1,4 @@
-// 📁 src/app/services/seo.service.ts
+ // 📁 src/app/services/seo.service.ts
 import { Injectable } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
@@ -94,8 +94,8 @@ export class SeoService {
   setDefaultSeo() {
     this.updateSeoData({
       title: 'Inicio',
-      description: 'Crunchy Munch - Las mejores cookies, crookies y milkshakes artesanales. Ingredientes frescos, sabores únicos y la mejor experiencia dulce.',
-      keywords: 'cookies artesanales, crookies, milkshakes, postres, dulces, crunchy munch, chocolate, nutella',
+      description: 'Crunchy Munch - Las mejores cookies, crookies y milkshakes artesanales. Los mejores ingredientes, sabores únicos y la mejor experiencia dulce, estamos ubicados en el Oriente Antioqueño.',
+      keywords: 'Cookies, Crookies, Milkshakes, Postres, Dulces, Crunchy munch, Chocolate, Nutella, Rionegro,Oriente Antioqueño,Marinilla, ',
       image: 'https://crunchy-munch.com/assets/og-home.jpg'
     });
   }
@@ -105,8 +105,8 @@ export class SeoService {
     const seoData: { [key: string]: { title: string; description: string; keywords: string } } = {
       'Cookie': {
         title: 'Nuestras Cookies ',
-        description: 'Deliciosas cookies artesanales con ingredientes premium. Chocolate chip, double chocolate, y más sabores únicos.',
-        keywords: 'cookies artesanales, chocolate chip, cookies caseras, postres'
+        description: 'Deliciosas cookies artesanales con ingredientes premium. Kinder, red velvet, y más sabores únicos.',
+        keywords: 'cookies artesanales, kinder, lemon pie, triple chocolate'
       },
       'Crookie': {
         title: 'Nuestras Crookies',
@@ -139,6 +139,14 @@ export class SeoService {
       description: 'Conoce la historia de Crunchy Munch. Nuestra pasión por crear los mejores postres artesanales y la experiencia que nos respalda.',
       keywords: 'crunchy munch historia, quienes somos, postres artesanales, empresa',
       image: 'https://crunchy-munch.com/assets/og-about.jpg'
+    });
+  }
+  setCookieFest() {
+    this.updateSeoData({
+      title: 'Cookie Fest',
+      description: 'El evento donde se disputan las mejores galleterias de el oriente antioqueño por el podio, ven y vota por tu cookie facorita y ayudanos a elegir un ganador.',
+      keywords: 'Cookie Fest, Crunchy Munch, Votacion,La galletery, Koalas bakery,Ancookies, Bluetopia, Bruki, Fratelli ',
+    
     });
   }
 }
