@@ -38,7 +38,7 @@ export class VoteService {
 
   // Crear un nuevo voto
   createVote(voteData: VoteData): Observable<VoteResponse> {
-    return this.http.post<VoteResponse>(`${this.apiUrl}`, voteData); // Fixed endpoint
+    return this.http.post<VoteResponse>(`${this.apiUrl}/create`, voteData); // Fixed endpoint
   }
 
   // Verificar si una cédula ya ha votado
