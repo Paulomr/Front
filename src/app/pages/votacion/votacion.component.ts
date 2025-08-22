@@ -188,7 +188,7 @@ export class VotacionComponent {
 
   // Obtener URL del backend para debugging
   private getBackendUrl(): string {
-    return 'https://api.crunchy-munch.com/api/vote';
+    return 'https://api.crunchy-munch.com/api/vote/create';
   }
 
   // Headers esperados para debugging
