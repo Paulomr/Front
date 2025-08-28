@@ -13,7 +13,7 @@ import { VoteService, VoteData } from '../../services/vote.service';
   styleUrl: './votacion.component.css'
 })
 export class VotacionComponent {
-  selectedOption: number | null = null; // Changed to number
+  selectedOption: number | null = null;
   showForm: boolean = false;
   isSubmitting: boolean = false;
   
@@ -25,13 +25,15 @@ export class VotacionComponent {
   readonly Koalas = 4;
   readonly Bruki = 5;
   
-  // Datos del formulario
+  // Datos del formulario actualizados
   userData: VoteData = {
     nombreCompleto: '',
-    cedula: '',
+    documento: '',        // Cambiado de 'cedula' a 'documento'
+    edad: 18,            // Agregado con valor por defecto
+    municipio: '',       // Agregado
     telefono: '',
     correo: '',
-    selectedOption: 0 // Changed to number
+    selectedOption: 0
   };
 
   constructor(
@@ -88,12 +90,13 @@ export class VotacionComponent {
     }
   }
 
-  // Validar formulario
+  // Validar formulario actualizado
   private validateForm(): boolean {
     console.log('Validando formulario...');
     
-    if (!this.userData.nombreCompleto.trim() || !this.userData.cedula.trim() || 
-        !this.userData.telefono.trim() || !this.userData.correo.trim()) {
+    if (!this.userData.nombreCompleto.trim() || !this.userData.documento.trim() || 
+        !this.userData.municipio.trim() || !this.userData.telefono.trim() || 
+        !this.userData.correo.trim()) {
       alert('Por favor, completa todos los campos');
       return false;
     }
@@ -104,13 +107,23 @@ export class VotacionComponent {
       return false;
     }
 
-    if (!/^\d+$/.test(this.userData.cedula)) {
-      alert('La cédula debe contener solo números');
+    if (!/^\d+$/.test(this.userData.documento)) {
+      alert('El documento debe contener solo números');
       return false;
     }
 
     if (!/^\d{7,15}$/.test(this.userData.telefono)) {
       alert('El número de teléfono debe tener entre 7 y 15 dígitos');
+      return false;
+    }
+
+    if (this.userData.edad < 5 || this.userData.edad > 100) {
+      alert('La edad debe estar entre 5 y 100 años');
+      return false;
+    }
+
+    if (!this.userData.municipio) {
+      alert('Por favor, selecciona tu municipio');
       return false;
     }
 
@@ -123,17 +136,17 @@ export class VotacionComponent {
     return true;
   }
 
-  // Verificar si ya ha votado (como Promise)
+  // Verificar si ya ha votado (actualizado)
   private checkIfAlreadyVoted(): Promise<void> {
     return new Promise((resolve, reject) => {
-      console.log('Verificando si ya votó con cédula:', this.userData.cedula);
+      console.log('Verificando si ya votó con documento:', this.userData.documento);
       
-      this.voteService.checkVote(this.userData.cedula.trim()).subscribe({
+      this.voteService.checkVote(this.userData.documento.trim()).subscribe({
         next: (response) => {
           console.log('Respuesta de verificación:', response);
           
           if (response.hasVoted) {
-            alert('Esta cédula ya ha sido utilizada para votar');
+            alert('Este documento ya ha sido utilizado para votar');
             reject(new Error('Ya ha votado'));
             return;
           }
@@ -156,10 +169,12 @@ export class VotacionComponent {
       // Preparar datos limpios
       const voteData: VoteData = {
         nombreCompleto: this.userData.nombreCompleto.trim(),
-        cedula: this.userData.cedula.trim(),
+        documento: this.userData.documento.trim(),
+        edad: this.userData.edad,
+        municipio: this.userData.municipio,
         telefono: this.userData.telefono.trim(),
         correo: this.userData.correo.trim().toLowerCase(),
-        selectedOption: this.selectedOption! // This is now a number
+        selectedOption: this.selectedOption!
       };
 
       console.log('=== ENVIANDO AL BACKEND ===');
@@ -248,7 +263,9 @@ export class VotacionComponent {
     this.selectedOption = null;
     this.userData = {
       nombreCompleto: '',
-      cedula: '',
+      documento: '',
+      edad: 5,
+      municipio: '',
       telefono: '',
       correo: '',
       selectedOption: 0

@@ -5,10 +5,12 @@ import { Observable } from 'rxjs';
 
 export interface VoteData {
   nombreCompleto: string;
-  cedula: string;
+  documento: string;      // Cambiado de 'cedula' a 'documento' para coincidir con el HTML
+  edad: number;           // Agregado
+  municipio: string;      // Agregado
   telefono: string;
   correo: string;
-  selectedOption: number; // Changed to number to match backend
+  selectedOption: number;
 }
 
 export interface VoteResponse {
@@ -32,18 +34,18 @@ export interface StatisticsResponse {
   providedIn: 'root'
 })
 export class VoteService {
-  private apiUrl = 'https://api.crunchy-munch.com/api/vote';
+  private apiUrl = 'https://api.crunchy-munch.com/api/vote/';
 
   constructor(private http: HttpClient) {}
 
   // Crear un nuevo voto
   createVote(voteData: VoteData): Observable<VoteResponse> {
-    return this.http.post<VoteResponse>(`${this.apiUrl}/create`, voteData); // Fixed endpoint
+    return this.http.post<VoteResponse>(`${this.apiUrl}/create`, voteData);
   }
 
   // Verificar si una cédula ya ha votado
-  checkVote(cedula: string): Observable<{cedula: string, hasVoted: boolean}> {
-    return this.http.get<{cedula: string, hasVoted: boolean}>(`${this.apiUrl}/check/${cedula}`);
+  checkVote(documento: string): Observable<{documento: string, hasVoted: boolean}> {
+    return this.http.get<{documento: string, hasVoted: boolean}>(`${this.apiUrl}/check/${documento}`);
   }
 
   // Obtener estadísticas
@@ -53,6 +55,6 @@ export class VoteService {
 
   // Obtener todos los votos (admin)
   getAllVotes(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}`); // Fixed endpoint
+    return this.http.get<any[]>(`${this.apiUrl}`);
   }
 }

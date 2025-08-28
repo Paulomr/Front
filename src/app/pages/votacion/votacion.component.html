@@ -1,124 +1,194 @@
 <!-- Sección de votación - se oculta cuando showForm es true -->
 <div class="container" *ngIf="!showForm">
-    <!-- Personaje izquierdo (galleta) -->
-    <div class="character-left">
-        <img src="../../../assets/img/Mantequilla color.png" alt="Personaje Galleta">
+  <!-- Personaje izquierdo (galleta) -->
+  <div class="character-left">
+    <img
+      src="../../../assets/img/Mantequilla color.png"
+      alt="Personaje Galleta"
+    />
+  </div>
+
+  <!-- Panel de votación -->
+  <div class="voting-panel">
+    <div class="voting-header">
+      <h1 class="voting-title">VOTA AQUI</h1>
+      <div class="voting-subtitle">POR LA GALLETA GANADORA</div>
     </div>
 
-    <!-- Panel de votación -->
-    <div class="voting-panel">
-        <div class="voting-header">
-            <h1 class="voting-title">VOTA AQUI</h1>
-            <div class="voting-subtitle">POR LA GALLETA GANADORA</div>
-        </div>
-
-        <div class="voting-grid">
-            <div class="vote-option" 
-                 (click)="selectOption(Ancookies)" 
-                 [class.selected]="selectedOption === Ancookies">
-                <img src="../../../assets/img/Ancookies logo [Recuperado]-01.png" alt="Ancookies">
-            </div>
-            <div class="vote-option" 
-                 (click)="selectOption(Galletery)" 
-                 [class.selected]="selectedOption === Galletery">
-                <img src="../../../assets/img/Logotipo.PNG" alt="Galletery">
-            </div>
-            <div class="vote-option" 
-                 (click)="selectOption(Fratelli)" 
-                 [class.selected]="selectedOption === Fratelli">
-                <img src="../../../assets/img/Fratelli (15).png" alt="Fratelli">
-            </div>
-            <div class="vote-option" 
-                 (click)="selectOption(Bluetopia)" 
-                 [class.selected]="selectedOption === Bluetopia">
-                <img src="../../../assets/img/imagee.png" alt="Bluetopia">
-            </div>
-            <div class="vote-option" 
-                 (click)="selectOption(Koalas)" 
-                 [class.selected]="selectedOption === Koalas">
-                <img src="../../../assets/img/images.png" alt="Atlas">
-            </div>
-            <div class="vote-option" 
-                 (click)="selectOption(Bruki)" 
-                 [class.selected]="selectedOption === Bruki">
-                <img src="../../../assets/img/image.png" alt="Bruki">
-            </div>
-        </div>
-
-        <button class="confirm-vote" 
-                (click)="confirmVote()" 
-                [disabled]="selectedOption === null">
-            CONFIRMAR VOTO
-        </button>
+    <div class="voting-grid">
+      <div
+        class="vote-option"
+        (click)="selectOption(Ancookies)"
+        [class.selected]="selectedOption === Ancookies"
+      >
+        <img
+          src="../../../assets/img/Ancookies logo [Recuperado]-01.png"
+          alt="Ancookies"
+        />
+      </div>
+      <div
+        class="vote-option"
+        (click)="selectOption(Galletery)"
+        [class.selected]="selectedOption === Galletery"
+      >
+        <img src="../../../assets/img/Logotipo.PNG" alt="Galletery" />
+      </div>
+      <div
+        class="vote-option"
+        (click)="selectOption(Fratelli)"
+        [class.selected]="selectedOption === Fratelli"
+      >
+        <img src="../../../assets/img/Fratelli (15).png" alt="Fratelli" />
+      </div>
+      <div
+        class="vote-option"
+        (click)="selectOption(Bluetopia)"
+        [class.selected]="selectedOption === Bluetopia"
+      >
+        <img src="../../../assets/img/imagee.png" alt="Bluetopia" />
+      </div>
+      <div
+        class="vote-option"
+        (click)="selectOption(Koalas)"
+        [class.selected]="selectedOption === Koalas"
+      >
+        <img src="../../../assets/img/images.png" alt="Atlas" />
+      </div>
+      <div
+        class="vote-option"
+        (click)="selectOption(Bruki)"
+        [class.selected]="selectedOption === Bruki"
+      >
+        <img src="../../../assets/img/image.png" alt="Bruki" />
+      </div>
     </div>
 
-    <!-- Personaje derecho (oso) -->
-    <div class="character-right">
-        <img src="../../../assets/img/CM cafetero.png" alt="Personaje Oso">
-    </div>
+    <button
+      class="confirm-vote"
+      (click)="confirmVote()"
+      [disabled]="selectedOption === null"
+    >
+      CONFIRMAR VOTO
+    </button>
+  </div>
+
+  <!-- Personaje derecho (oso) -->
+  <div class="character-right">
+    <img src="../../../assets/img/CM cafetero.png" alt="Personaje Oso" />
+  </div>
 </div>
 
 <!-- Formulario - se muestra cuando showForm es true -->
 <div *ngIf="showForm" class="form-container">
-    <div class="user-form-panel">
-        <div class="form-header">
-            <h1 class="form-title">COMPLETA TUS DATOS</h1>
-            <div class="form-subtitle">PARA FINALIZAR TU VOTO</div>
+  <div class="user-form-panel">
+    <div class="form-header">
+      <h1 class="form-title">COMPLETA TUS DATOS</h1>
+      <div class="form-subtitle">PARA FINALIZAR TU VOTO</div>
+    </div>
+
+    <form class="user-form" (ngSubmit)="submitForm()">
+      <div class="form-group">
+        <label for="nombreCompleto">Nombre Completo:</label>
+        <input
+          type="text"
+          id="nombreCompleto"
+          [(ngModel)]="userData.nombreCompleto"
+          name="nombreCompleto"
+          placeholder="Ingresa tu nombre completo"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="documento">Documento de Identidad:</label>
+        <input
+          type="text"
+          id="documento"
+          [(ngModel)]="userData.documento"
+          name="documento"
+          placeholder="Ingresa tu número de documento"
+          required
+        />
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="edad">Edad:</label>
+          <input
+            type="number"
+            id="edad"
+            [(ngModel)]="userData.edad"
+            name="edad"
+            placeholder="Edad"
+            min="10"
+            max="100"
+            required
+          />
         </div>
 
-        <form class="user-form" (ngSubmit)="submitForm()">
-            <div class="form-group">
-                <label for="nombreCompleto">Nombre Completo:</label>
-                <input 
-                    type="text" 
-                    id="nombreCompleto" 
-                    [(ngModel)]="userData.nombreCompleto"
-                    name="nombreCompleto"
-                    placeholder="Ingresa tu nombre completo"
-                    required>
-            </div>
+        <div class="form-group">
+          <label for="municipio">Municipio:</label>
+          <select
+            id="municipio"
+            [(ngModel)]="userData.municipio"
+            name="municipio"
+            required
+          >
+            <option value="">Selecciona tu municipio</option>
+            <option value="Abejorral">Abejorral</option>
+            <option value="Alejandría">Alejandría</option>
+            <option value="Bello">Bello</option>
+            <option value="Carmen de Viboral">Carmen de Viboral</option>
+            <option value="Cocorná">Cocorná</option>
+            <option value="Concepción">Concepción</option>
+            <option value="El Peñol">El Peñol</option>
+            <option value="El Retiro">El Retiro</option>
+            <option value="El Santuario">El Santuario</option>
+            <option value="Envigado">Envigado</option>
+            <option value="Guarne">Guarne</option>
+            <option value="Guatapé">Guatapé</option>
+            <option value="Itagui">Itagui</option>
+            <option value="La Ceja">La Ceja</option>
+            <option value="La Unión">La Unión</option>
+            <option value="Medellin">Medellin</option>
+            <option value="Rionegro">Rionegro</option>
+            <option value="Sabaneta">Sabaneta</option>
+            <option value="Sonsón">Sonsón</option>
+            <option value="Otro">Otro municipio</option>
+          </select>
+        </div>
+      </div>
 
-            <div class="form-group">
-                <label for="cedula">Cédula:</label>
-                <input 
-                    type="text" 
-                    id="cedula" 
-                    [(ngModel)]="userData.cedula"
-                    name="cedula"
-                    placeholder="Ingresa tu número de cédula"
-                    required>
-            </div>
+      <div class="form-group">
+        <label for="telefono">Numero Telefonico:</label>
+        <input
+          type="tel"
+          id="telefono"
+          [(ngModel)]="userData.telefono"
+          name="telefono"
+          placeholder="Ingresa tu número de teléfono"
+          required
+        />
+      </div>
 
-            <div class="form-group">
-                <label for="telefono">Número Telefónico:</label>
-                <input 
-                    type="tel" 
-                    id="telefono" 
-                    [(ngModel)]="userData.telefono"
-                    name="telefono"
-                    placeholder="Ingresa tu número de teléfono"
-                    required>
-            </div>
+      <div class="form-group">
+        <label for="correo">Correo Electronico:</label>
+        <input
+          type="email"
+          id="correo"
+          [(ngModel)]="userData.correo"
+          name="correo"
+          placeholder="Ingresa tu correo electrónico"
+          required
+        />
+      </div>
 
-            <div class="form-group">
-                <label for="correo">Correo Electrónico:</label>
-                <input 
-                    type="email" 
-                    id="correo" 
-                    [(ngModel)]="userData.correo"
-                    name="correo"
-                    placeholder="Ingresa tu correo electrónico"
-                    required>
-            </div>
-
-            <div class="form-actions">
-                <button type="button" class="cancel-btn" (click)="cancelForm()">
-                    CANCELAR
-                </button>
-                <button routerLink="" type="submit" class="submit-btn">
-                    ENVIAR VOTO
-                </button>
-            </div>
-        </form>
-    </div>
+      <div class="form-actions">
+        <button type="button" class="cancel-btn" (click)="cancelForm()">
+          CANCELAR
+        </button>
+        <button type="submit" class="submit-btn">ENVIAR VOTO</button>
+      </div>
+    </form>
+  </div>
 </div>
