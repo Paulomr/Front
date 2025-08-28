@@ -290,7 +290,7 @@ export class VotacionComponent {
 
   // Helper method to get option name for display
   getOptionName(optionNumber: number): string {
-    const options = ['Ancookies', 'Galletery', 'Fratelli', 'Bluetopia', 'Atlas', 'Bruki'];
+    const options = ['Ancookies', 'Galletery', 'Fratelli', 'Bluetopia', 'Koalas', 'Bruki'];
     return options[optionNumber] || 'Opción desconocida';
   }
 }
