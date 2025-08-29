@@ -24,7 +24,7 @@ body {
 
 .marquee-content {
   display: inline-block;
-  animation: scroll-left 30s linear infinite;
+  animation: scroll-left 20s linear infinite;
   font-weight: bold;
   font-size: 18px;
 }
