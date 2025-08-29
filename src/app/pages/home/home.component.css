@@ -1,148 +1,552 @@
-.container {
-  text-align: center;
-  font-family: sans-serif;
-  display: grid;
-  align-items: center;
-  grid-template-columns: 1fr 1fr;
+* {
   margin: 0;
-  height: 100vh; /* Mejor uso de viewport height */
-  max-width: 1400px; /* Limitar ancho máximo */
-  margin: 0 auto; /* Centrar en pantallas grandes */
-  padding: 0 20px; /* Padding horizontal para evitar que el contenido toque los bordes */
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.slogan {
-  font-size: 7rem;
-  font-family: "superReduce", sans-serif;
-  color: #fff;
-  padding: 10px;
-  padding-top: 10%;
-  font-weight: 300; /* Un poco más de peso que 100 para mejor legibilidad */
-  line-height: 1.2; /* Mejorar espaciado entre líneas */
-  margin-bottom: 2rem; /* Espacio consistente abajo */
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Sutil sombra para mejorar legibilidad */
+body {
+  font-family: "brown beige", sans-serif;
+  background-color: #fbdd7a;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-.pedido-btn {
-  background-color: #ff88c2;  
-  color: #000;
-  font-size: 2.5rem;
-  font-family: "brownBeige", sans-serif;
-  padding: 15px 25px; /* Más padding para mejor clickabilidad */
-  border: none;
-  border-radius: 25px; /* Ligeramente más redondeado */
+/* Marquesinas */
+.marquee-container {
+  font-family: "brown beige", sans-serif;
+  overflow: hidden;
+  background-color: #fbdd7a;
+  color: black;
+  white-space: nowrap;
+  position: relative;
+}
+
+.marquee-content {
+  display: inline-block;
+  animation: scroll-left 30s linear infinite;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Sección principal */
+section {
+  background-color: #fbdd7a;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  min-height: calc(100vh - 160px);
+  position: relative;
+  overflow: hidden;
+}
+
+
+
+/* Contenedor del contenido de texto/logo */
+.main-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+/* Contenedor de la mantequilla */
+.mantequilla-container {
+  flex: 0 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.mantequilla {
+  height: 450px;
+  width: auto;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
+  transition: all 0.3s ease;
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* Añadido transición de color */
-  width: 60%;
-  margin: 0 auto; /* Centrar mejor el botón */
-  margin-top: 20%;
-  display: block; /* Mejor para centrado */
-  font-weight: 600; /* Un poco más de negrita para el botón */
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil por defecto */
+}
+.mantequilla:hover {
+  transform: scale(1.05) translateY(-5px);
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.2));
 }
 
-.pedido-btn:hover {
-  transform: scale(1.05); /* Escala un poco menos agresiva */
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
-  background-color: #ff9ed0; /* Ligero cambio de color al hover */
+/* Contenedor del contenido de texto/logo */
+.content-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding-left: 40px;
 }
-
-.pedido-btn:active {
-  transform: scale(0.98);
-  background-color: #ff77b8; /* Color más oscuro al hacer clic */
-}
-
-/* Responsive para tablets grandes */
-@media (max-width: 1200px) {
-  .slogan {
-    font-size: 5.5rem;
-    padding-top: 8%;
-  }
-  
-  .pedido-btn {
-    font-size: 2.2rem;
-    width: 70%;
-  }
-}
-
-/* Responsive para tablets */
-@media (max-width: 992px) {
-  .container {
-    height: auto;
-    min-height: 40rem;
-    padding: 40px 30px;
-  }
-  
-  .slogan {
-    font-size: 4.5rem;
-    padding-top: 6%;
-  }
-  
-  .pedido-btn {
-    font-size: 2rem;
+.welcome-image{
     width: 75%;
-    margin-top: 15%;
+}
+.Cookie-fest {
+    width: 55%;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.Cookie-fest:hover {
+    transform: scale(1.15);
+    filter: brightness(1.1) drop-shadow(0 8px 20px rgba(0, 0, 0, 0.25));
+}
+.Hosted{
+    width: 40%;
+    margin-top: -20px;
+}
+/* Elementos decorativos de fondo */
+section::before {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, #d4951a 100%, transparent 30%);
+  opacity: 0.08;
+  top: 2%;
+  left: 15%;
+  z-index: 0;
+  border-radius: 50%;
+}
+
+section::after {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, #d4951a 100%, transparent 30%);
+  opacity: 0.06;
+  bottom: 5%;
+  left: 25%;
+  z-index: 0;
+  border-radius: 50%;
+}
+
+/* Decoraciones adicionales */
+.decoracion-extra {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  background-image: url("../../../assets/img/decoracion\ 3.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.25;
+  top: -10%;
+  right: -5%;
+  z-index: 1;
+}
+
+.decoracion-circulo {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #d4951a 100%, transparent 10%);
+  opacity: 0.08;
+  top: 15%;
+  right: 15%;
+  z-index: 0;
+  border-radius: 50%;
+}
+
+.decoracion-img1 {
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  background-image: url("../../../assets/img/decoracion\ 2.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.3;
+  top: -20%;
+  left: 0;
+  z-index: 1;
+}
+
+.decoracion-img2 {
+  position: absolute;
+  width: 550px;
+  height: 550px;
+  background-image: url("../../../assets/img/decoracion\ 1.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.25;
+  bottom: -20%;
+  left: -10%;
+  z-index: 1;
+}
+
+.decoracion-circulo-2 {
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, #d4951a 15%, transparent 15%);
+  opacity: 0.05;
+  top: 10%;
+  left: 20%;
+  z-index: 0;
+  border-radius: 50%;
+}
+
+.decoracion-circulo-3 {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, #d4951a 35%, transparent 35%);
+  opacity: 0.1;
+  bottom: -15%;
+  right: 0%;
+  z-index: 0;
+  border-radius: 50%;
+}
+
+/* Responsive - Tablet */
+@media (max-width: 1024px) {
+  .main-content {
+    max-width: 900px;
+  }
+
+  .mantequilla {
+    height: 400px;
+  }
+
+  .welcome-image {
+    max-height: 500px;
+  }
+
+  /* Ajustar decoraciones para tablet */
+  section::before {
+    width: 250px;
+    height: 250px;
+    top: 5%;
+    left: 10%;
+    opacity: 0.06;
+  }
+
+  section::after {
+    width: 250px;
+    height: 250px;
+    bottom: 8%;
+    left: 20%;
+    opacity: 0.05;
+  }
+
+  .decoracion-extra {
+    width: 300px;
+    height: 300px;
+    top: -8%;
+    right: -3%;
+    opacity: 0.2;
+  }
+
+  .decoracion-circulo {
+    width: 400px;
+    height: 400px;
+    top: 20%;
+    right: 10%;
+    opacity: 0.06;
+  }
+
+  .decoracion-img1 {
+    width: 380px;
+    height: 380px;
+    top: -15%;
+    left: 2%;
+    opacity: 0.25;
+  }
+
+  .decoracion-img2 {
+    width: 480px;
+    height: 480px;
+    bottom: -15%;
+    left: -8%;
+    opacity: 0.2;
+  }
+
+  .decoracion-circulo-2 {
+    width: 380px;
+    height: 380px;
+    top: 15%;
+    left: 15%;
+    opacity: 0.04;
+  }
+
+  .decoracion-circulo-3 {
+    width: 250px;
+    height: 250px;
+    bottom: -10%;
+    right: 5%;
+    opacity: 0.08;
   }
 }
 
-/* Responsive para tablets pequeñas */
+/* Responsive - Mobile */
 @media (max-width: 768px) {
-  .container {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
-    gap: 30px; /* Añadir espacio entre elementos */
-    padding: 50px 25px;
+  section {
+    flex-direction: column;
+    padding: 20px 15px;
+    text-align: center;
   }
-  
-  .slogan {
-    font-size: 3.8rem; /* Un poco más grande para mejor legibilidad */
-    grid-row: 1;
-    padding-top: 0;
-    margin-bottom: 0; /* Ajustado porque ahora usamos gap */
+
+  .main-content {
+    flex-direction: column;
+    text-align: center;
   }
-  
-  .pedido-btn {
-    grid-row: 2;
-    font-size: 1.8rem;
-    width: 80%;
-    margin: 0 auto;
-    padding: 15px 25px;
+
+  .mantequilla-container {
+    margin-right: 0;
+    margin-bottom: 30px;
+  }
+
+  .mantequilla {
+    height: 320px;
+  }
+
+  .content-container {
+    justify-content: center;
+  }
+
+  .welcome-image {
+    max-height: 400px;
+  }
+
+  .marquee-content {
+    font-size: 16px;
+  }
+
+  /* Decoraciones ajustadas para móvil */
+  section::before {
+    width: 180px;
+    height: 180px;
+    top: 3%;
+    left: 5%;
+    opacity: 0.04;
+  }
+
+  section::after {
+    width: 200px;
+    height: 200px;
+    bottom: 12%;
+    left: 15%;
+    opacity: 0.04;
+  }
+
+  .decoracion-extra {
+    width: 200px;
+    height: 200px;
+    top: -5%;
+    right: -2%;
+    opacity: 0.15;
+  }
+
+  .decoracion-circulo {
+    width: 280px;
+    height: 280px;
+    top: 25%;
+    right: 5%;
+    opacity: 0.04;
+  }
+
+  .decoracion-img1 {
+    width: 250px;
+    height: 250px;
+    top: -10%;
+    left: 5%;
+    opacity: 0.18;
+  }
+
+  .decoracion-img2 {
+    width: 300px;
+    height: 300px;
+    bottom: -10%;
+    left: -3%;
+    opacity: 0.15;
+  }
+
+  .decoracion-circulo-2 {
+    width: 220px;
+    height: 220px;
+    top: 18%;
+    left: 12%;
+    opacity: 0.03;
+  }
+
+  .decoracion-circulo-3 {
+    width: 180px;
+    height: 180px;
+    bottom: -5%;
+    right: 8%;
+    opacity: 0.06;
   }
 }
 
-/* Responsive para móviles */
-@media (max-width: 576px) {
-  .container {
-    padding: 40px 20px;
-    gap: 25px;
+/* Responsive - Mobile pequeño */
+@media (max-width: 480px) {
+  .mantequilla {
+    height: 280px;
   }
-  
-  .slogan {
-    font-size: 2.8rem; /* Un poco más grande para mejor legibilidad */
-    line-height: 1.3;
+
+  .welcome-image {
+    max-height: 320px;
   }
-  
-  .pedido-btn {
-    font-size: 1.6rem; /* Ligeramente más grande para mejor usabilidad */
-    width: 90%;
-    padding: 14px 20px;
-    border-radius: 22px; /* Ajustar el radio para tamaño más pequeño */
+
+  .marquee-content {
+    font-size: 14px;
+  }
+
+  /* Decoraciones para móvil pequeño */
+  section::before {
+    width: 120px;
+    height: 120px;
+    top: 2%;
+    left: 3%;
+    opacity: 0.03;
+  }
+
+  section::after {
+    width: 140px;
+    height: 140px;
+    bottom: 10%;
+    left: 12%;
+    opacity: 0.03;
+  }
+
+  .decoracion-extra {
+    width: 130px;
+    height: 130px;
+    top: -3%;
+    right: -1%;
+    opacity: 0.12;
+  }
+
+  .decoracion-circulo {
+    width: 180px;
+    height: 180px;
+    top: 22%;
+    right: 3%;
+    opacity: 0.03;
+  }
+
+  .decoracion-img1 {
+    width: 160px;
+    height: 160px;
+    top: -8%;
+    left: 3%;
+    opacity: 0.14;
+  }
+
+  .decoracion-img2 {
+    width: 200px;
+    height: 200px;
+    bottom: -8%;
+    left: -2%;
+    opacity: 0.12;
+  }
+
+  .decoracion-circulo-2 {
+    width: 140px;
+    height: 140px;
+    top: 15%;
+    left: 8%;
+    opacity: 0.025;
+  }
+
+  .decoracion-circulo-3 {
+    width: 120px;
+    height: 120px;
+    bottom: -3%;
+    right: 5%;
+    opacity: 0.05;
+  }
+}
+@media (min-width: 1400px) {
+  .mantequilla {
+    height: 500px;
   }
 }
 
-/* Responsive para móviles pequeños */
-@media (max-width: 375px) {
-  .container {
-    padding: 30px 15px;
-  }
-  
-  .slogan {
-    font-size: 2.2rem;
-  }
-  
-  .pedido-btn {
-    font-size: 1.4rem;
-    width: 95%;
-    padding: 12px 15px;
+/* Responsive - Desktop */
+@media (max-width: 1200px) {
+  .mantequilla {
+    height: 420px;
   }
 }
+
+/* Responsive - Tablet grande */
+@media (max-width: 1024px) {
+  .mantequilla {
+    height: 380px;
+  }
+  
+  .mantequilla:hover {
+    transform: scale(1.03) translateY(-3px);
+  }
+}
+
+/* Responsive - Tablet */
+@media (max-width: 900px) {
+  .mantequilla {
+    height: 350px;
+  }
+}
+
+/* Responsive - Tablet pequeño */
+@media (max-width: 768px) {
+  .mantequilla {
+    height: 320px;
+  }
+  
+  .mantequilla:hover {
+    transform: scale(1.02) translateY(-2px);
+    filter: drop-shadow(0 12px 25px rgba(0, 0, 0, 0.15));
+  }
+}
+
+/* Responsive - Mobile grande */
+@media (max-width: 600px) {
+  .mantequilla {
+    height: 300px;
+  }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 480px) {
+  .mantequilla {
+    height: 280px;
+  }
+}
+
+/* Responsive - Mobile pequeño */
+@media (max-width: 400px) {
+  .mantequilla {
+    height: 250px;
+  }
+  
+  .mantequilla:hover {
+    transform: scale(1.01) translateY(-1px);
+    filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.12));
+  }
+}
+
+/* Responsive - Mobile muy pequeño */
+@media (max-width: 320px) {
+  .mantequilla {
+    height: 220px;
+  }
+} 
