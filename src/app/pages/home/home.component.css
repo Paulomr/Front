@@ -523,7 +523,7 @@ section::after {
   .mantequilla {
     height: 300px;
   }
-  .marquee-content{animation: scroll-left 20s linear infinite;}
+  .marquee-content{animation: scroll-left 15s linear infinite;}
   
 }
 
