@@ -24,9 +24,11 @@ import { PedidosActivosComponent } from './pages/pedidos-activos/pedidos-activos
 import { VotacionComponent } from './pages/votacion/votacion.component';
 import { ConfirmacionVotoComponent } from './pages/confirmacion-voto/confirmacion-voto.component';
 import { TratamientoComponent } from './pages/tratamiento/tratamiento.component';
+import { InitComponent } from './pages/init/init.component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent },
+   { path: '', component: InitComponent },
+  { path: 'Main', component: HomeComponent },
   { path: 'Quien Somos', component: QuienSomosComponent },
   { path: 'Cookie', component: CookieProductoComponent },
   { path: 'Bebidas', component: BebidasProductoComponent },

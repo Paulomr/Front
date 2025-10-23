@@ -30,7 +30,10 @@ import { SeoService } from './services/seo.service';
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-  title = 'Crunchy Munch - Deliciosas Cookies y Milkshakes';
+  
+title = 'Crunchy Munch - Deliciosas Cookies y Milkshakes';
+
+  showMainLayout = true; // <-- Control para mostrar/ocultar header, footer, etc.
 
   constructor(
     private router: Router,
@@ -39,25 +42,23 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     console.log('🚀 Inicializando Crunchy Munch App...');
-    
-    // 🎯 SEO por defecto al cargar la app
+
     this.seoService.setDefaultSeo();
 
-    // 📍 Escuchar cambios de ruta para actualizar SEO
     this.router.events
-      .pipe(
-        filter((event: Event): event is NavigationEnd => event instanceof NavigationEnd)
-      )
+      .pipe(filter((event: Event): event is NavigationEnd => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
         console.log(`🔄 Navegando a: ${event.url}`);
-        
-        // Scroll to top en cada cambio de página
+
         window.scrollTo(0, 0);
-        
-        // Actualizar SEO según la ruta actual
+
         this.updateSeoBasedOnRoute(event.url);
+
+        // Mostrar layout completo solo si la ruta NO es la intro
+        this.showMainLayout = event.url !== '/';
       });
   }
+
 
   private updateSeoBasedOnRoute(url: string) {
     // Limpiar query parameters y normalizar

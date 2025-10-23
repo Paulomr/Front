@@ -1,0 +1,104 @@
+:host {
+  display: block;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* CONTENEDOR PRINCIPAL CON LOGO COMO FONDO */
+.Intro_Container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: url('../../../assets/img/inicio.png') center center no-repeat;
+  background-size: 30vw 30vw; /* Tamaño relativo, adaptable */
+  animation: crecimientoFluido 6s ease-in-out infinite;
+}
+
+/* NUBES SUPERIOR e INFERIOR CON ANIMACIÓN Y FONDO */
+.Nube_SuperiorBg,
+.Nube_InferiorBg {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 120vh;
+  background-repeat: no-repeat;
+  background-size: 120% 120%;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* NUBE SUPERIOR */
+.Nube_SuperiorBg {
+  top: 0;
+  left: 0;
+  background-image: url('../../../assets/img/Nube1.png');
+  background-position: center top;
+  animation: nubeDiagonalSuperior 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* NUBE INFERIOR */
+.Nube_InferiorBg {
+  bottom: 0;
+  right: 0;
+  background-image: url('../../../assets/img/Nube 2.png');
+  background-position: center bottom;
+  animation: nubeDiagonalInferior 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* ANIMACIONES DIAGONALES CON PROFUNDIDAD */
+@keyframes nubeDiagonalSuperior {
+  from {
+    transform: translate(0, 0) scale(1.5);
+    opacity: 1;
+  }
+  to {
+    transform: translate(-33vw, 50vh) scale(1);
+  }
+}
+
+@keyframes nubeDiagonalInferior {
+  from {
+    transform: translate(10vw, 10vh) scale(1.5);
+    opacity: 1;
+  }
+  to {
+    transform: translate(30vw, -50vh) scale(1);
+  }
+}
+
+/* CRECIMIENTO FLUIDO DEL LOGO */
+@keyframes crecimientoFluido {
+  0% {
+    background-position: center center;
+    background-size: 40vw 40vw;
+  }
+  100% {
+    background-position: center center;
+    background-size: 70vw 70vw;
+  }
+}
+
+/* RESPONSIVO PARA PANTALLAS PEQUEÑAS Y MEDIANAS */
+@media (max-width: 900px) {
+  .Intro_Container {
+    background-size: 100vw 100vw;
+  }
+  .Nube_SuperiorBg,
+  .Nube_InferiorBg {
+    height: 120vh;
+    background-size: 140% 140%;
+  }
+}
+
+@media (max-width: 600px) {
+  .Intro_Container {
+    background-size: 100vw 100vw;
+  }
+  .Nube_SuperiorBg,
+  .Nube_InferiorBg {
+    height: 100vh;
+    background-size: 100% 140%;
+  }
+}
