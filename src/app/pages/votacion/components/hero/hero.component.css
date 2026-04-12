@@ -4,10 +4,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: hidden;
+  overflow: visible;
   background: #d991b5;
   width: 100%;
-  justify-content: flex-start;  
+  justify-content: flex-start;
 }
 
 .hero-bg {
@@ -117,6 +117,7 @@
   justify-content: space-between;
   padding: 0 16px;
   margin-top: 10px;
+  position: relative;
 }
 
 .hero-bottom-logos {
@@ -125,7 +126,6 @@
   gap: 10px;
 }
 
-/* Logos 68px */
 .logo-circle-sm {
   width: 68px;
   height: 68px;
@@ -154,10 +154,10 @@
   line-height: 1;
 }
 
-/* Arco — más grande y sin cortar */
+/* ── Arco ── */
 .hero-register-arc {
   opacity: 1;
-  margin-bottom: -40px;
+  margin-bottom: -60px;
   margin-right: -14px;
   filter: drop-shadow(0 1px 3px rgba(0,0,0,0.25));
 }
@@ -171,16 +171,16 @@
   margin-top: auto;
   flex-shrink: 0;
   margin-bottom: -2px;
-  margin-top: -80px; 
+  margin-top: -80px;
 }
 
 .hero-wave-bg svg {
   display: block;
   width: 100%;
-  height: 340px; 
+  height: 340px;
 }
 
-/* ── Pill COMPETIDORES — position absolute respecto al .hero ── */
+/* ── Pill COMPETIDORES ── */
 .hero-competitors-pill {
   position: absolute;
   bottom: 65px;
@@ -190,10 +190,10 @@
   background: #efaac7;
   border: 2px solid rgba(255,255,255,0.75);
   border-radius: 999px;
-  padding: 18px 50px;
+  padding: 22px 70px;
   text-align: center;
-  width: 88%;
-  max-width: 420px;
+  width: 70%;
+  max-width: 480px;
   white-space: nowrap;
   box-shadow: 0 4px 18px rgba(200,100,150,0.2);
 }
