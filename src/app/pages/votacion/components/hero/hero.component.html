@@ -7,7 +7,6 @@
   </div>
 
   <div class="hero-content">
-
     <div class="hero-badge">✦ COMPETENCIA OFICIAL 2026 ✦</div>
 
     <img src="../../../../../assets/img/LOGO 4.png"
@@ -22,60 +21,78 @@
 
     <p class="hero-tagline">LA BATALLA DE LAS GALLETAS</p>
     <p class="hero-sub">VOTA POR TU FAVORITA Y CORONA AL CAMPEÓN DEL AÑO</p>
+  </div>
 
-    <div class="hero-bottom-row">
-      <div class="hero-bottom-logos">
-        <div class="logo-circle-sm">
-          <img src="../../../../../assets/img/logo.png" alt="CF" />
-        </div>
-        <span class="bottom-x">×</span>
-        <div class="logo-circle-sm">
-          <img src="../../../../../assets/img/logoFooter.PNG" alt="Vynder" />
-        </div>
+  <!-- Zona inferior: waves + logos + arco + pill -->
+  <div class="hero-wave-back-wrap">
+
+    <!-- Logos sobre el wave trasero -->
+    <div class="hero-bottom-logos">
+      <div class="logo-circle-sm">
+        <img src="../../../../../assets/img/logo.png" alt="CF" />
       </div>
-
-      <div class="hero-register-arc">
-        <svg viewBox="0 0 200 300" width="160" height="260">
-          <defs>
-            <path id="arc" d="M 30,280 A 180,180 0 0,1 195,30"/>
-          </defs>
-          <text font-size="13" fill="white"
-                font-family="'Fredoka', cursive"
-                font-weight="600" letter-spacing="3">
-            <textPath href="#arc" startOffset="5%">
-              REGÍSTRATE PARA DEJAR TU VOTO
-            </textPath>
-          </text>
-        </svg>
+      <span class="bottom-x">×</span>
+      <div class="logo-circle-sm">
+        <img src="../../../../../assets/img/logoFooter.PNG" alt="Vynder" />
       </div>
     </div>
 
-  </div>
+    <!-- Arco esquina derecha -->
+    <div class="hero-register-arc">
+      <svg viewBox="0 0 200 300" width="150" height="245">
+        <defs>
+          <path id="arc" d="M 28,278 A 178,178 0 0,1 193,28"/>
+        </defs>
+        <text font-size="12.5" fill="white"
+              font-family="'Fredoka', cursive"
+              font-weight="600" letter-spacing="3.5">
+          <textPath href="#arc" startOffset="3%">
+            REGÍSTRATE PARA DEJAR TU VOTO
+          </textPath>
+        </text>
+      </svg>
+    </div>
 
-  <!-- Wave decorativo -->
-  <div class="hero-wave-bg">
-    <svg viewBox="0 0 960 200" preserveAspectRatio="none"
-         xmlns="http://www.w3.org/2000/svg">
+    <!-- Wave TRASERO: media elipse desde la izquierda -->
+    <svg class="wave-back-svg" viewBox="0 0 390 340"
+        preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,90
+              C5,82 15,72 32,65
+              C60,52 100,52 128,80
+              C150,102 158,132 158,170
+              C158,208 150,238 128,260
+              C100,288 60,288 32,275
+              C15,268 5,258 0,250
+              Z"
+            fill="#60bac2"/>
+    </svg>
+
+    <!-- Wave DELANTERO -->
+    <svg class="wave-front-svg" viewBox="0 0 960 300"
+        preserveAspectRatio="none"
+        xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="waveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%"  style="stop-color:#8ecfe0; stop-opacity:1" />
-          <stop offset="45%" style="stop-color:#b0a0d5; stop-opacity:1" />
-          <stop offset="100%" style="stop-color:#f0b8d0; stop-opacity:1" />
+          <stop offset="0%"   stop-color="#a8b6d3" />
+          <stop offset="12%"  stop-color="#b4cad8" />
+          <stop offset="25%"  stop-color="#bedadb" />
+          <stop offset="50%"  stop-color="#c7ced4" />
+          <stop offset="62%"  stop-color="#cac2d1" />
+          <stop offset="75%"  stop-color="#cdb6ca" />
+          <stop offset="87%"  stop-color="#d3a6c3" />
+          <stop offset="100%" stop-color="#d29fbe" />
         </linearGradient>
       </defs>
-      <path d="M0,60
-               C80,140 200,20 340,80
-               C460,130 560,30 700,70
-               C800,100 880,40 960,60
-               L960,200 L0,200 Z"
+      <path d="M0,120 C120,280 280,40 480,160 C640,260 760,60 960,120 L960,300 L0,300 Z"
             fill="url(#waveGrad)"/>
     </svg>
-  </div>
 
-  <!-- Pill COMPETIDORES -->
-  <div class="hero-competitors-pill">
-    <h2 class="pill-title">COMPETIDORES</h2>
-    <p class="pill-sub">Vota por tu galleta favorita y ayuda a definir al campeón</p>
+    <!-- Pill COMPETIDORES -->
+    <div class="hero-competitors-pill">
+      <h2 class="pill-title">COMPETIDORES</h2>
+      <p class="pill-sub">Vota por tu galleta favorita y ayuda a definir al campeón</p>
+    </div>
+
   </div>
 
 </section>

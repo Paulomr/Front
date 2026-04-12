@@ -1,13 +1,11 @@
 .hero {
   position: relative;
-  min-height: 600px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: visible;
+  overflow: hidden;
   background: #d991b5;
   width: 100%;
-  justify-content: flex-start;
 }
 
 .hero-bg {
@@ -35,7 +33,7 @@
   );
 }
 
-/* ── Contenido ── */
+/* ── Contenido central ── */
 .hero-content {
   position: relative;
   z-index: 3;
@@ -109,26 +107,51 @@
   margin: 0;
 }
 
-/* ── Logos + arco ── */
-.hero-bottom-row {
-  width: 100%;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  padding: 0 16px;
-  margin-top: 10px;
+/* ── Contenedor de toda la zona inferior ── */
+.hero-wave-back-wrap {
   position: relative;
+  z-index: 2;
+  width: 100%;
+  margin-top: 16px;
+  height: 340px;
+  flex-shrink: 0;
 }
 
+/* ── Wave trasero: turquesa, ocupa toda la altura del wrap, lado izq ── */
+.wave-back-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 72%;
+  height: 100%;
+  display: block;
+}
+
+/* ── Wave delantero: degradado, ocupa la base ── */
+.wave-front-svg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ── Logos (anclados al wave trasero, mitad izq) ── */
 .hero-bottom-logos {
+  position: absolute;
+  top: 36%;
+  bottom: unset;
+  left: 10px;
+  z-index: 5;
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
 .logo-circle-sm {
-  width: 68px;
-  height: 68px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
   background: rgba(255,255,255,0.30);
   border: 2.5px solid rgba(255,255,255,0.85);
@@ -136,7 +159,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0;
   box-shadow: 0 2px 12px rgba(0,0,0,0.15);
 }
 
@@ -154,46 +176,29 @@
   line-height: 1;
 }
 
-/* ── Arco ── */
+/* ── Arco (esquina derecha) ── */
 .hero-register-arc {
-  opacity: 1;
-  margin-bottom: -60px;
-  margin-right: -14px;
+  position: absolute;
+  top: -60px;
+  right: -14px;
+  z-index: 5;
   filter: drop-shadow(0 1px 3px rgba(0,0,0,0.25));
-}
-
-/* ── Wave decorativo ── */
-.hero-wave-bg {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  line-height: 0;
-  margin-top: auto;
-  flex-shrink: 0;
-  margin-bottom: -2px;
-  margin-top: -80px;
-}
-
-.hero-wave-bg svg {
-  display: block;
-  width: 100%;
-  height: 340px;
 }
 
 /* ── Pill COMPETIDORES ── */
 .hero-competitors-pill {
   position: absolute;
-  bottom: 65px;
+  bottom: 28px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 4;
+  z-index: 6;
   background: #efaac7;
   border: 2px solid rgba(255,255,255,0.75);
   border-radius: 999px;
-  padding: 22px 70px;
+  padding: 18px 32px;
   text-align: center;
-  width: 70%;
-  max-width: 480px;
+  width: 75%;
+  max-width: 460px;
   white-space: nowrap;
   box-shadow: 0 4px 18px rgba(200,100,150,0.2);
 }
@@ -215,5 +220,4 @@
   font-size: 12px;
   color: rgba(255,255,255,0.92);
   margin: 0;
-  white-space: nowrap;
 }
