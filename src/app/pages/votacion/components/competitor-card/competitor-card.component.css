@@ -14,14 +14,14 @@
 
 .card-img-wrap {
   position: relative;
-  height: 190px;
+  height: 200px;
   overflow: hidden;
   border-radius: 16px 16px 0 0;
 }
 
 .card-bg-img {
   width: 100%;
-  height: 190px;
+  height: 200px;
   object-fit: cover;
   border-radius: 16px 16px 0 0;
   transition: transform 0.3s ease;
@@ -190,4 +190,13 @@
 
 .btn-vote:active {
   transform: scale(0.98);
+}
+
+@media (max-width: 600px) {
+  .card-img-wrap {
+    height: 140px;
+  }
+  .card-bg-img {
+    height: 140px;
+  }
 }
