@@ -23,6 +23,13 @@
   object-position: center top;
 }
 
+@media (max-width: 600px) {
+  .hero-photo {
+    object-fit: cover;
+    object-position: center center;
+  }
+}
+
 .hero-overlay {
   position: absolute;
   inset: 0;
@@ -145,9 +152,8 @@
 /* ── Logos (anclados al wave trasero, mitad izq) ── */
 .hero-bottom-logos {
   position: absolute;
-  top: 36%;
-  bottom: unset;
-  left: 10px;
+  top: 25%;
+  left: 90px;
   z-index: 5;
   display: flex;
   align-items: center;
@@ -188,8 +194,8 @@
 /* ── Arco (esquina derecha) ── */
 .hero-register-arc {
   position: absolute;
-  top: -60px;
-  right: -14px;
+  top: -40px;
+  right: -8px;
   z-index: 5;
   filter: drop-shadow(0 1px 3px rgba(0,0,0,0.25));
 }
@@ -231,6 +237,23 @@
   margin: 0;
 }
 
+@media (max-width: 600px) {
+  .hero-competitors-pill {
+    width: 85%;
+    padding: 14px 20px;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .pill-title {
+    font-size: 20px;
+  }
+
+  .pill-sub {
+    font-size: 10px;
+  }
+}
+
 .hero-user-btn {
   position: absolute;
   top: 16px;
@@ -249,4 +272,31 @@
 
 .hero-user-btn:hover {
   transform: scale(1.05);
+}
+
+@media (max-width: 600px) {
+  .hero-bottom-logos {
+    top: 30%;
+    left: 5px;
+  }
+
+  .logo-circle-sm {
+    width: 37px;
+    height: 37px;
+  }
+
+  .vynder-bottom-logo {
+    width: 48px;
+    height: 48px;
+  }
+
+  .hero-register-arc {
+    top: -20px;
+    right: -12px;
+
+  }
+  .hero-register-arc svg {
+    width: 130px;
+    height: 200px;
+  }
 }
