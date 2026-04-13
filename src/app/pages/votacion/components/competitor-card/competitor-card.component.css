@@ -134,17 +134,28 @@
   width: 100%;
 }
 
+.btn-icon {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+  mix-blend-mode: screen;
+}
+
 .btn-secondary {
   flex: 1;
-  padding: 5px 4px;    /* más compacto */
+  padding: 5px 4px;
   border: none;
   border-radius: 8px;
-  font-size: 9px;      /* más pequeño */
+  font-size: 9px;
   font-weight: 700;
   color: #fff;
   cursor: pointer;
   transition: opacity 0.2s;
   letter-spacing: 0.3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
 }
 
 .btn-secondary.blue { background: #4e5e98; }
