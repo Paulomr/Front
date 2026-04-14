@@ -8,6 +8,7 @@ import { CompetitorCardComponent } from './components/competitor-card/competitor
 import { VoteFormComponent } from './components/vote-form/vote-form.component';
 import { StatisticsResponse } from '../../services/vote/vote.service';
 import { VoteRealtimeService } from '../../services/vote/vote-realtime.service';
+import { CompetitorService } from '../../services/competitor/competitor.service';
 import { Local } from './models/local.model';
 
 @Component({
@@ -23,24 +24,60 @@ export class VotacionComponent implements OnInit, OnDestroy {
   statistics: StatisticsResponse | null = null;
   private statsSub: Subscription | null = null;
 
-  locales: Local[] = [
-    { nombre: 'Ancookies',  imagen: '../../../assets/img/Ancookies logo [Recuperado]-01.png', descripcion: 'Galletería artesanal con recetas únicas y sabores que te transportan a la infancia.' },
-    { nombre: 'Galletery',  imagen: '../../../assets/img/Logotipo.PNG',                       descripcion: 'Un mundo de galletas creativas hechas con ingredientes premium y mucho amor.' },
-    { nombre: 'Fratelli',   imagen: '../../../assets/img/Fratelli (15).png',                  descripcion: 'Tradición italiana convertida en galletas irresistibles para toda la familia.' },
-    { nombre: 'Bluetopia',  imagen: '../../../assets/img/imagee.png',                         descripcion: 'Sabores sorprendentes que desafían los límites de la galletería moderna.' },
-    { nombre: 'Koalas',     imagen: '../../../assets/img/images.png',                         descripcion: 'Galletas inspiradas en la naturaleza con ingredientes orgánicos y sostenibles.' },
-    { nombre: 'Bruki',      imagen: '../../../assets/img/image.png',                          descripcion: 'Innovación y sabor se unen en cada bocado de esta galletería de vanguardia.' }
-  ];
+  locales: Local[] = [];
 
-  constructor(private realtimeService: VoteRealtimeService) {}
+  constructor(
+    private realtimeService: VoteRealtimeService,
+    private competitorService: CompetitorService
+  ) {}
 
   ngOnInit(): void {
     this.realtimeService.startPolling();
     this.statsSub = this.realtimeService.stats$.subscribe(stats => {
       this.statistics = stats;
     });
+    this.loadCompetitors();
   }
 
+  loadCompetitors(): void {
+  this.competitorService.getCompetitors().subscribe({
+    next: (competitors) => {
+      this.locales = competitors.map(c => ({
+        nombre: c.nombre,
+        imagen: this.getLocalImage(c.nombre),
+        fondo: this.getLocalFondo(c.nombre),
+        descripcion: c.descripcion,
+        whatsapp: c.whatsapp,
+        ubicacion: c.ubicacion
+      }));
+    },
+    error: (err) => {
+      console.error('Error cargando competidores:', err);
+    }
+  });
+}
+
+getLocalImage(nombre: string): string {
+  const images: { [key: string]: string } = {
+    'Crunchy Munch': 'assets/img/crunchy.png',
+    'Dolcatto': 'assets/img/DOLCATO.jpeg',
+    'Fratelli Repostería': 'assets/img/FRATELI.jpeg',
+    'Koalas Bakery': 'assets/img/KOALAS.png',
+    'Ancookies': 'assets/img/ANCOOKIES.jpeg'
+  };
+  return images[nombre] || 'assets/img/logo.png';
+}
+
+getLocalFondo(nombre: string): string {
+  const fondos: { [key: string]: string } = {
+    'Crunchy Munch': 'assets/img/CrunchyFondo.jpeg',
+    'Dolcatto': 'assets/img/DOLCATOFondo.jpeg',
+    'Fratelli Repostería': 'assets/img/FratelliFondo.jpeg',
+    'Koalas Bakery': 'assets/img/KoalasFondo.jpeg',
+    'Ancookies': 'assets/img/AncookiesFondo.jpeg'
+  };
+  return fondos[nombre] || '';
+}
   ngOnDestroy(): void {
     this.realtimeService.stopPolling();
     this.statsSub?.unsubscribe();

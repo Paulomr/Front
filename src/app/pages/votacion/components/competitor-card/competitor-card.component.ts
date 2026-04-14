@@ -25,4 +25,16 @@ export class CompetitorCardComponent {
   vote(): void {
     this.onVote.emit(this.index);
   }
+
+  goToLocation(): void {
+    if (this.local.ubicacion) {
+      window.open(this.local.ubicacion, '_blank');
+    }
+  }
+
+  goToWhatsapp(): void {
+    if (this.local.whatsapp) {
+      window.open(this.local.whatsapp, '_blank');
+    }
+  }
 }
