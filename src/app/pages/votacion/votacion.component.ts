@@ -43,18 +43,30 @@ export class VotacionComponent implements OnInit, OnDestroy {
   this.competitorService.getCompetitors().subscribe({
     next: (competitors) => {
       this.locales = competitors.map(c => ({
-        nombre: c.nombre,
-        imagen: this.getLocalImage(c.nombre),
-        fondo: this.getLocalFondo(c.nombre),
-        descripcion: c.descripcion,
-        whatsapp: c.whatsapp,
-        ubicacion: c.ubicacion
+       nombre: c.nombre,
+       imagen: this.getLocalImage(c.nombre),
+       fondo: this.getLocalFondo(c.nombre),
+       descripcion: this.getLocalDescripcion(c.nombre),
+       whatsapp: c.whatsapp,
+       ubicacion: c.ubicacion
       }));
     },
     error: (err) => {
       console.error('Error cargando competidores:', err);
     }
   });
+}
+
+getLocalDescripcion(nombre: string): string {
+  const descripciones: { [key: string]: string } = {
+    'Crunchy Munch': 'Tiramisú 🤎 Una Galleta Liviana de Cacao y Café, Rellena de Postre Secreto de Tiramisú y Coronada con Queso Mascarpone y Ralladura de Chocolate Semi Amargo 🍫',
+    'Crunchy Munch 2': 'Be-Fit 🍫 Hecha con Harina de Almendras y Mandioca, Con mantequilla Ghee 🧈 Endulzada con Alulosa 100%... Relleno de Spread de Marañon y Chocolate con Sal Marina 100% ADICTIVO y SALUDABLE 💚',
+    'Dolcatto': 'Cremoso frío de New York Cookie 🍪✨ Un postre cucharable en capas de New York cookie con crema suave y deliciosa. Frío, cremoso y perfecto para disfrutar, con opción de caramelo salado.',
+    'Fratelli Repostería': 'LA JAMAIQUINA 🌺 Galleta de mantequilla y macadamia, sobre una nube de vainilla, reducción de flor de jamaica, confitura de maracumango artesanal con trozos de fruta y un toque de menta.',
+    'Koalas Bakery': 'Berry Bloom 🍓 Galleta de vainilla con trozos de chocolate blanco y fresa deshidratada. Rellena de reducción de fresas, crema suave de vainilla, Crumble de Mantequilla y una flor de masapan ❤️',
+    'Ancookies': 'Berry Pop 💜 Base suave de vainilla con arándanos y chips de chocolate blanco. Con reducción de uvas y arándanos, cubierta de ganache Súper Sabroso 💜'
+  };
+  return descripciones[nombre] || '';
 }
 
 getLocalImage(nombre: string): string {
