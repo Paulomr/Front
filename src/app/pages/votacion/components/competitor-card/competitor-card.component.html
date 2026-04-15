@@ -11,9 +11,9 @@
   </div>
 
   <div class="card-pink-zone">
-    <div class="logo-circle">
-      <img [src]="local.imagen" [alt]="local.nombre" />
-    </div>
+      <div class="logo-circle" [class.logo-contain]="local.nombre === 'Crunchy Munch' || local.nombre === 'Crunchy Munch 2'">
+        <img [src]="local.imagen" [alt]="local.nombre" />
+      </div>
 
     <div class="card-desc" [class.open]="showInfo">
       <p class="desc-label">Descripción:</p>
