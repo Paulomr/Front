@@ -15,7 +15,7 @@ export class InitComponent implements OnInit {
 
   ngOnInit() {
     setTimeout(() => {
-      this.router.navigate(['/Main']);
+      this.router.navigate(['/Votacion']);
     }, 3000); // 3 segundos, igual a la animación
   }
 }
