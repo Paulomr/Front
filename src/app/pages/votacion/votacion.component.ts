@@ -98,7 +98,7 @@ export class VotacionComponent implements OnInit, OnDestroy {
   }
 
   getVotesForOption(index: number): number {
-    if (!this.statistics) return 0;
+    if (!this.statistics || !this.statistics.results) return 0;
     const found = this.statistics.results.find(r => r.option === index);
     return found ? found.votes : 0;
   }
