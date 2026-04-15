@@ -47,9 +47,16 @@ export class VoteService {
     return this.http.post<VoteResponse>(`${this.apiUrl}/create`, voteData);
   }
 
-  // Verificar si una cédula ya ha votado
+  // Verificar si un documento ya ha votado
   checkVote(documento: string): Observable<{documento: string, hasVoted: boolean}> {
     return this.http.get<{documento: string, hasVoted: boolean}>(`${this.apiUrl}/check/${documento}`);
+  }
+
+  // Verificar si un correo ya ha votado
+  checkVoteByEmail(correo: string): Observable<{correo: string, hasVoted: boolean}> {
+    return this.http.get<{correo: string, hasVoted: boolean}>(`${this.apiUrl}/check-email`, {
+      params: { correo }
+    });
   }
 
   // Obtener estadísticas

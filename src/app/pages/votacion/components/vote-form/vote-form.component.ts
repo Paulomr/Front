@@ -37,7 +37,7 @@ export class VoteFormComponent implements OnInit {
   readonly competitorOptions = [
     'Crunchy Munch',
     'Dolcatto',
-    'Fratelli Repostería',
+    'Fratelli Reposteria',
     'Koalas Bakery',
     'Ancookies',
     'Crunchy Munch 2'
@@ -115,14 +115,25 @@ export class VoteFormComponent implements OnInit {
   }
 
   private checkIfAlreadyVoted(): Promise<void> {
-    return new Promise((resolve, reject) => {
+    const checkDocumento = new Promise<void>((resolve, reject) => {
       this.voteService.checkVote(this.userData.documento.trim()).subscribe({
         next: (res) => res.hasVoted
-          ? reject(new Error('Ya votó'))
+          ? reject(new Error('Ya votó con este documento'))
           : resolve(),
-        error: () => resolve() // si falla el check, dejamos pasar
+        error: () => resolve()
       });
     });
+
+    const checkCorreo = new Promise<void>((resolve, reject) => {
+      this.voteService.checkVoteByEmail(this.userData.correo.trim().toLowerCase()).subscribe({
+        next: (res) => res.hasVoted
+          ? reject(new Error('Ya votó con este correo'))
+          : resolve(),
+        error: () => resolve()
+      });
+    });
+
+    return Promise.all([checkDocumento, checkCorreo]).then(() => undefined);
   }
 
   private sendVote(): Promise<void> {
@@ -148,15 +159,28 @@ export class VoteFormComponent implements OnInit {
   }
 
   private handleError(error: any): void {
-    if (error?.message === 'Ya votó') {
-      alert('Este documento ya ha sido utilizado para votar');
+    if (error?.message === 'Ya votó con este documento') {
+      alert('Este documento ya ha sido utilizado para votar. Solo se permite un voto por persona.');
+      return;
+    }
+    if (error?.message === 'Ya votó con este correo') {
+      alert('Este correo electrónico ya ha sido utilizado para votar. Solo se permite un voto por correo.');
       return;
     }
     let msg = 'Error al procesar tu voto. Intenta nuevamente.';
     if (error instanceof HttpErrorResponse) {
-      msg = error.status === 0
-        ? 'No se puede conectar con el servidor.'
-        : error.error?.message || msg;
+      if (error.status === 0) {
+        msg = 'No se puede conectar con el servidor.';
+      } else {
+        const serverMsg: string = error.error?.message || '';
+        if (serverMsg.includes('correo')) {
+          msg = 'Este correo electrónico ya ha sido utilizado para votar.';
+        } else if (serverMsg.includes('documento')) {
+          msg = 'Este documento ya ha sido utilizado para votar.';
+        } else {
+          msg = serverMsg || msg;
+        }
+      }
     }
     alert(msg);
   }
